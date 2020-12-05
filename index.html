@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <input type="text" id="username" /><br />
+    <input type="button" id="sign in" />
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDFL0EgyZdHnXMTSEHAsvn9fZkQEtyhDJg",
+            authDomain: "sebenzatu.firebaseapp.com",
+            projectId: "sebenzatu",
+            storageBucket: "sebenzatu.appspot.com",
+            messagingSenderId: "470511187660",
+            appId: "1:470511187660:web:f6e34a7d350e59db0e7469"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        try {
+
+            const username = document.querySelector("#username").value
+            var firestore = firebase.firestore()
+            var firestoreRef = firestore.doc("Users/user")
+
+            firestoreRef.set({
+                value: username
+            })
+        }catch (err) {
+            document.getElementById("sign in").innerHTML = err.message;
+       }
+    
+            
+    </script>
+</body>
+</html>
